@@ -62,7 +62,7 @@
 	window.addEventListener('keydown', function(e) {
 		// define variable pero key-code
 		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-		const key = document.querySelector(`key[data-key="${e.keyCode}"]`);
+		const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 		// if there is no audio that corresponds to key, stop function from running all together
 		if(!audio) return;
 		// rewind to the start for multiple press
@@ -73,12 +73,15 @@
 	});
 
 	function removeTransition(e) {
-		console.log(e);
+		// Skip it if its not transform
+		if(e.propertyName !== 'transform') return;
+		// log actions in console
+		this.classList.remove('playing');
 	}
 	// get all key selector
 	const keys = document.querySelectorAll('.key');
 	//loop through all selector and remove transition
-	keys.foreach(key => key.addEventListener('transitionend', removeTransition));
+	keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 </script>
 
 
