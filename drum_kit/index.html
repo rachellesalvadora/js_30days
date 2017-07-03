@@ -58,8 +58,13 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+// add eveent listener
 	window.addEventListener('keydown', function(e) {
-		console.log(e);
+		// define variable pero key-code
+		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+		// if there is no audio that corresponds to key, stop function from running all together
+		if(!audio) return;
+		audio.play();
 	});
 </script>
 
