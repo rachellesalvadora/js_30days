@@ -59,7 +59,9 @@
 
 <script>
 // add eveent listener
-	window.addEventListener('keydown', function(e) {
+	
+
+	function playsound (e) {
 		// define variable pero key-code
 		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
 		const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
@@ -69,8 +71,7 @@
 		audio.currentTime = 0;
 		audio.play();
 		key.classList.add('playing');
-
-	});
+	}
 
 	function removeTransition(e) {
 		// Skip it if its not transform
@@ -82,6 +83,8 @@
 	const keys = document.querySelectorAll('.key');
 	//loop through all selector and remove transition
 	keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+	window.addEventListener('keydown', playsound);
 </script>
 
 
